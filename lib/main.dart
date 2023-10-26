@@ -39,10 +39,10 @@ class MyApp extends StatelessWidget {
                         title: "Hello",
                         content: "This is just a test",
                         onOkButtonPressed: positiveAction,
-                        onCancelButtonPressed: negativeAction,
-                        buttonBackgroundColor: Colors.green,
-                        buttonTextColor: Colors.yellow,
-                        buttonPositiveText: "Send message",
+                        //onCancelButtonPressed: negativeAction,
+                        //buttonBackgroundColor: Colors.green,
+                        //buttonTextColor: Colors.yellow,
+                        //buttonPositiveText: "Send message",
                       );
                     },
                   );
@@ -60,8 +60,8 @@ class MyApp extends StatelessWidget {
 class CustomAlertDialog extends StatelessWidget {
   final String title;
   final String content;
-  final OkButtonCallback onOkButtonPressed;
-  final CancelButtonCallback onCancelButtonPressed;
+  final OkButtonCallback? onOkButtonPressed;
+  final CancelButtonCallback? onCancelButtonPressed;
   final Color buttonBackgroundColor;
   final Color buttonTextColor;
   final Color titleColor;
@@ -74,8 +74,8 @@ class CustomAlertDialog extends StatelessWidget {
     super.key,
     required this.title,
     required this.content,
-    required this.onOkButtonPressed,
-    required this.onCancelButtonPressed,
+    this.onOkButtonPressed,
+    this.onCancelButtonPressed,
     this.buttonBackgroundColor = Colors.black,
     this.buttonTextColor = Colors.white,
     this.titleColor = Colors.black,
@@ -94,7 +94,9 @@ class CustomAlertDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
-            onCancelButtonPressed();
+            if(onCancelButtonPressed != null){
+              onCancelButtonPressed!();
+            }
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: buttonBackgroundColor,
@@ -108,7 +110,9 @@ class CustomAlertDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
-            onOkButtonPressed();
+            if(onOkButtonPressed != null){
+              onOkButtonPressed!();
+            }
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: buttonBackgroundColor,
