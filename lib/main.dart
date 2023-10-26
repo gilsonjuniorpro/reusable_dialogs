@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 typedef void OkButtonCallback();
+typedef void CancelButtonCallback();
 
 void main() {
   runApp(MaterialApp(
@@ -62,7 +63,7 @@ class CustomAlertDialog extends StatelessWidget {
   final String title;
   final String content;
   final OkButtonCallback onOkButtonPressed;
-  final OkButtonCallback onCancelButtonPressed;
+  final CancelButtonCallback onCancelButtonPressed;
   final Color buttonBackgroundColor;
   final Color buttonTextColor;
   final Color titleColor;
@@ -95,7 +96,7 @@ class CustomAlertDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
-            onCancelButtonPressed;
+            onCancelButtonPressed();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: buttonBackgroundColor,
@@ -109,7 +110,7 @@ class CustomAlertDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
-            onOkButtonPressed;
+            onOkButtonPressed();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: buttonBackgroundColor,
