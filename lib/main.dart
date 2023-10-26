@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-typedef void OkButtonCallback();
-typedef void CancelButtonCallback();
+typedef OkButtonCallback = void Function();
+typedef CancelButtonCallback = void Function();
 
 void main() {
   runApp(MaterialApp(
@@ -12,12 +12,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   void positiveAction() {
-    print("The ok button was clicked");
     Fluttertoast.showToast(msg: "The ok button was clicked");
   }
 
   void negativeAction() {
-    print("The cancel button was clicked");
     Fluttertoast.showToast(msg: "The cancel button was clicked");
   }
 
